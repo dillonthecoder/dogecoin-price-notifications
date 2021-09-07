@@ -6,16 +6,16 @@ import time
 from datetime import datetime
 
 DOGECOIN_PRICE_THRESHOLD = 0.29
-IFTTT_WEBHOOKS_URL = 'https://maker.ifttt.com/trigger/{event}/with/key/{yourkey}'
+IFTTT_WEBHOOKS_URL = 'https://maker.ifttt.com/trigger/{event}/with/key/{yourkey}' # Your IFTTT key goes here
 DOGECOIN_API_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 
 parameters = {
-    'slug': 'dogecoin',
+    'slug': 'dogecoin', # This can be changed to whatever cryptocurrency you want
     'convert': 'USD'
 }
 headers = {
   'Accepts': 'application/json',
-  'X-CMC_PRO_API_KEY': 'your_api_key_here',
+  'X-CMC_PRO_API_KEY': 'your_api_key_here', # CoinMarketCap API key goes here
 }
 
 session = Session()
@@ -24,10 +24,9 @@ session.headers.update(headers)
 
 def get_latest_dogecoin_price():
     try:
-        # might need to try global
         response = session.get(DOGECOIN_API_URL, params=parameters)
         data = json.loads(response.text)
-        return data['data']['74']['quote']['USD']['price']
+        return data['data']['74']['quote']['USD']['price'] # Changing these parameters will allow you to track different cryptos
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
 
@@ -55,7 +54,6 @@ def main():
         price = get_latest_dogecoin_price()
         date = datetime.now()
         dogecoin_history.append({'date': date, 'price': price})
-        print('Working so far')
         print(get_latest_dogecoin_price())
 
         if price < DOGECOIN_PRICE_THRESHOLD:
