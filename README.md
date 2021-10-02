@@ -15,4 +15,4 @@ From there, just drop in your API keys where I specify in the code, and change t
 
 
 
-This is a great project if you want to learn more about APIs and how they work, want to practice a bit with Python, or if you just really like cryptocurrencies like I do. Hope you all enjoy and have fun with it!
+This is a great project if you want to learn more about APIs and how they work, want to practice a bit with Python, or if you just really like cryptocurrencies like I do. Hope you all enjoy and have fun!
